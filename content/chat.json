@@ -1,6 +1,6 @@
 {
   "intro": "Ask my CV assistant about my studies, experience, skills or projects. It answers in English or Portuguese, using only my website, my university's page and my CV.",
-  "bot_url": "",
-  "iframe_src": "",
-  "bubble_script": ""
+  "bot_url": "https://www.chatbase.co/chatbot-iframe/xlkZDXzsM0ANULrfegCZu",
+  "iframe_src": "https://www.chatbase.co/chatbot-iframe/xlkZDXzsM0ANULrfegCZu",
+  "bubble_script": "<script>\n(function(){if(!window.chatbase||window.chatbase(\"getState\")!==\"initialized\"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop===\"q\"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement(\"script\");script.src=\"https://www.chatbase.co/embed.min.js\";script.id=\"xlkZDXzsM0ANULrfegCZu\";script.domain=\"www.chatbase.co\";document.body.appendChild(script)};if(document.readyState===\"complete\"){onLoad()}else{window.addEventListener(\"load\",onLoad)}})();\n</script>"
 }
