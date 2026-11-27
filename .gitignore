@@ -7,3 +7,6 @@ inputs/
 
 # Original CV with phone number stays local
 knowledge/raw/*.pdf
+
+# Report stays local (not published)
+report/
