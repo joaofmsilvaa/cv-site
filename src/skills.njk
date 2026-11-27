@@ -1,9 +1,12 @@
 ---
 layout: base.njk
 title: Skills
+intro: The languages, frameworks and tools I use in my studies, internships and projects.
 permalink: /skills/
 description: Technical skills and languages of João Silva.
 ---
 {% from "macros.njk" import skillsBlock %}
-<h1>Skills</h1>
-{{ skillsBlock(cv.skills, "h2") }}
+{% include "page-head.njk" %}
+<div class="wrap page-body">
+  {{ skillsBlock(cv.skills, "h2") }}
+</div>

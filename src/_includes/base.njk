@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if title %}{{ title }} | {% endif %}{{ p.name }}</title>
   <meta name="description" content="{{ description or (p.name + ', ' + p.headline) }}">
+  <meta name="theme-color" content="#1F3FBF">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   <link rel="icon" href="{{ p.photo }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,600;100,700;125,700;125,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">
   {
@@ -30,28 +31,28 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-head">
     <div class="wrap head-row">
-      <a class="brand" href="/">{{ p.name }}</a>
+      <a class="brand" href="/"><img src="{{ p.photo }}" alt="" width="32" height="32">{{ p.name }}</a>
       <nav aria-label="Main">
         <ul>
-          {%- set nav = [["/", "Home"], ["/education/", "Education"], ["/experience/", "Experience"], ["/skills/", "Skills"], ["/projects/", "Projects"], ["/cv/", "Full CV"], ["/chat/", "Chat with my CV"]] %}
+          {%- set nav = [["/education/", "Education"], ["/experience/", "Experience"], ["/skills/", "Skills"], ["/projects/", "Projects"], ["/cv/", "Full CV"]] %}
           {%- for item in nav %}
-          <li><a href="{{ item[0] }}"{% if page.url == item[0] %} aria-current="page"{% endif %}{% if item[0] == "/chat/" %} class="nav-chat"{% endif %}>{{ item[1] }}</a></li>
+          <li><a href="{{ item[0] }}"{% if page.url == item[0] %} aria-current="page"{% endif %}>{{ item[1] }}</a></li>
           {%- endfor %}
+          <li><a class="nav-chat" href="/chat/"{% if page.url == "/chat/" %} aria-current="page"{% endif %}>Chat with my CV</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <div class="barra" aria-hidden="true"></div>
 
-  <main id="main" class="wrap">
+  <main id="main">
     {{ content | safe }}
   </main>
 
   <footer class="site-foot">
-    <div class="barra" aria-hidden="true"></div>
     <div class="wrap foot-row">
-      <p>{{ p.name }}, {{ p.location }}. Write to me at <a href="mailto:{{ p.email }}">{{ p.email }}</a>.</p>
-      <p>{% for l in p.links %}<a href="{{ l.url }}" rel="me">{{ l.label }}</a>{% if not loop.last %} &nbsp;/&nbsp; {% endif %}{% endfor %}</p>
+      <p class="foot-name">{{ p.name }}</p>
+      <p>{{ p.location }}<br><a href="mailto:{{ p.email }}">{{ p.email }}</a></p>
+      <ul class="foot-links">{% for l in p.links %}<li><a href="{{ l.url }}" rel="me">{{ l.label }}</a></li>{% endfor %}</ul>
     </div>
   </footer>
   {% include "chat-bubble.njk" %}

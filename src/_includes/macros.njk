@@ -1,28 +1,40 @@
+{% macro dates(start, end) -%}
+<time datetime="{{ start }}">{{ start | monthYear }}</time> – {% if end == "present" %}present{% else %}<time datetime="{{ end }}">{{ end | monthYear }}</time>{% endif %}
+{%- endmacro %}
+
+{% macro tags(list) -%}
+{% if list.length %}<ul class="tags" aria-label="Technologies">{% for t in list %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+{%- endmacro %}
+
 {% macro educationList(items, h = "h3") %}
-<ol class="timeline">
+<ol class="entries">
   {%- for e in items %}
-  <li>
-    <p class="when"><time datetime="{{ e.start }}">{{ e.start | monthYear }}</time> – {% if e.end == "present" %}present{% else %}<time datetime="{{ e.end }}">{{ e.end | monthYear }}</time>{% endif %}</p>
-    <{{ h }}>{{ e.degree }}</{{ h }}>
-    <p class="where">{{ e.institution }}{% if e.location %}, {{ e.location }}{% endif %}</p>
-    {% if e.description %}<p>{{ e.description }}</p>{% endif %}
-    {% if e.courses.length %}<p>Courses taken: {{ e.courses | join(", ") }}.</p>{% endif %}
-    {% if e.eqf_level %}<p class="meta">European Qualifications Framework (EQF) level {{ e.eqf_level }}.</p>{% endif %}
-    {% if e.url %}<p class="meta"><a href="{{ e.url }}">{{ e.url }}</a></p>{% endif %}
+  <li class="entry">
+    <p class="when">{{ dates(e.start, e.end) }}{% if e.end == "present" %}<span class="now-dot">Current</span>{% endif %}</p>
+    <div class="entry-body">
+      <{{ h }}>{{ e.degree }}</{{ h }}>
+      <p class="where">{{ e.institution }}{% if e.location %}, {{ e.location }}{% endif %}</p>
+      {% if e.description %}<p>{{ e.description }}</p>{% endif %}
+      {% if e.courses.length %}<p>Courses taken: {{ e.courses | join(", ") }}.</p>{% endif %}
+      {% if e.eqf_level %}<p class="meta">European Qualifications Framework (EQF) level {{ e.eqf_level }}</p>{% endif %}
+      {% if e.url %}<p class="meta"><a href="{{ e.url }}">{{ e.url | replace("https://", "") }}</a></p>{% endif %}
+    </div>
   </li>
   {%- endfor %}
 </ol>
 {% endmacro %}
 
 {% macro experienceList(items, h = "h3") %}
-<ol class="timeline">
+<ol class="entries">
   {%- for x in items %}
-  <li>
-    <p class="when"><time datetime="{{ x.start }}">{{ x.start | monthYear }}</time> – {% if x.end == "present" %}present{% else %}<time datetime="{{ x.end }}">{{ x.end | monthYear }}</time>{% endif %}</p>
-    <{{ h }}>{{ x.role }}</{{ h }}>
-    <p class="where">{{ x.organization }}{% if x.location %}, {{ x.location }}{% endif %}</p>
-    <p>{{ x.description }}</p>
-    {% if x.technologies.length %}<p class="meta">Technologies: {{ x.technologies | join(", ") }}.</p>{% endif %}
+  <li class="entry">
+    <p class="when">{{ dates(x.start, x.end) }}{% if x.end == "present" %}<span class="now-dot">Current</span>{% endif %}</p>
+    <div class="entry-body">
+      <{{ h }}>{{ x.role }}</{{ h }}>
+      <p class="where">{{ x.organization }}{% if x.location %}, {{ x.location }}{% endif %}</p>
+      <p>{{ x.description }}</p>
+      {{ tags(x.technologies) }}
+    </div>
   </li>
   {%- endfor %}
 </ol>
@@ -31,12 +43,12 @@
 {% macro skillsBlock(skills, h = "h3") %}
 <div class="skill-groups">
   {%- for g in skills.groups %}
-  <section>
+  <section class="skill-group">
     <{{ h }}>{{ g.name }}</{{ h }}>
-    <ul class="tags">{% for s in g.items %}<li>{{ s }}</li>{% endfor %}</ul>
+    <ul class="tags tags-lg">{% for s in g.items %}<li>{{ s }}</li>{% endfor %}</ul>
   </section>
   {%- endfor %}
-  <section>
+  <section class="skill-group">
     <{{ h }}>Languages</{{ h }}>
     <ul class="plain">{% for l in skills.languages %}<li><strong>{{ l.language }}</strong>: {{ l.level }}</li>{% endfor %}</ul>
   </section>
@@ -44,30 +56,32 @@
 {% endmacro %}
 
 {% macro projectsBlock(pr, h = "h3") %}
-<ol class="timeline">
+<ol class="entries">
   {%- for x in pr.projects %}
-  <li>
-    <p class="when">{{ x.start | range(x.end) }}</p>
-    <{{ h }}>{% if x.url %}<a href="{{ x.url }}">{{ x.name }}</a>{% else %}{{ x.name }}{% endif %}</{{ h }}>
-    <p>{{ x.description }}</p>
-    {% if x.technologies.length %}<p class="meta">Technologies: {{ x.technologies | join(", ") }}.</p>{% endif %}
+  <li class="entry">
+    <p class="when">{{ dates(x.start, x.end) }}</p>
+    <div class="entry-body">
+      <{{ h }}>{% if x.url %}<a href="{{ x.url }}">{{ x.name }}</a>{% else %}{{ x.name }}{% endif %}</{{ h }}>
+      <p>{{ x.description }}</p>
+      {{ tags(x.technologies) }}
+    </div>
   </li>
   {%- endfor %}
 </ol>
 {% endmacro %}
 
 {% macro certificatesBlock(pr) %}
-<ul class="plain">
+<ul class="creds">
   {%- for c in pr.certificates %}
-  <li><strong>{{ c.name }}</strong>, {{ c.issuer }} (<time datetime="{{ c.date }}">{{ c.date | monthYear }}</time>)</li>
+  <li><strong>{{ c.name }}</strong><span>{{ c.issuer }}, <time datetime="{{ c.date }}">{{ c.date | monthYear }}</time></span></li>
   {%- endfor %}
 </ul>
 {% endmacro %}
 
 {% macro volunteeringBlock(pr) %}
-<ul class="plain">
+<ul class="creds">
   {%- for v in pr.volunteering %}
-  <li><strong>{{ v.role }}</strong>, {{ v.organization }} ({{ v.start | range(v.end) }})</li>
+  <li><strong>{{ v.role }}</strong><span>{{ v.organization }}, {{ v.start | range(v.end) }}</span></li>
   {%- endfor %}
 </ul>
 {% endmacro %}

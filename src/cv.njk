@@ -1,14 +1,16 @@
 ---
 layout: base.njk
 title: Full CV
+heading: Curriculum vitae
+intro: Everything on one page, in plain text.
 permalink: /cv/
 description: The complete CV of João Silva on one page, in plain text.
 ---
 {% from "macros.njk" import educationList, experienceList, skillsBlock, projectsBlock, certificatesBlock, volunteeringBlock %}
 {%- set p = cv.profile -%}
-<article class="cv-full">
-  <h1>Curriculum vitae: {{ p.name }}</h1>
-  <p>{{ p.headline }}. Nationality: {{ p.nationality }}. Location: {{ p.location }}. Email: <a href="mailto:{{ p.email }}">{{ p.email }}</a>.</p>
+{% include "page-head.njk" %}
+<article class="wrap page-body cv-full">
+  <p><strong>{{ p.name }}</strong>. {{ p.headline }}. Nationality: {{ p.nationality }}. Location: {{ p.location }}. Email: <a href="mailto:{{ p.email }}">{{ p.email }}</a>.</p>
   <p>Online: {% for l in p.links %}{{ l.label }} <a href="{{ l.url }}">{{ l.url }}</a>{% if not loop.last %}; {% endif %}{% endfor %}.</p>
 
   <h2>About me</h2>

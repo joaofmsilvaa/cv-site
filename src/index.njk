@@ -1,39 +1,88 @@
 ---
 layout: base.njk
 ---
+{% from "macros.njk" import tags, dates %}
 {%- set p = cv.profile -%}
-<section class="hero">
-  <img class="portrait" src="{{ p.photo }}" alt="{{ p.photo_alt }}" width="250" height="250">
-  <div>
-    <h1>{{ p.name }}</h1>
-    <p class="headline">{{ p.headline }}</p>
-    <p class="contact">{{ p.nationality }}, based in {{ p.location }}.<br><a href="mailto:{{ p.email }}">{{ p.email }}</a></p>
-    <ul class="links">{% for l in p.links %}<li><a href="{{ l.url }}" rel="me">{{ l.label }}</a></li>{% endfor %}</ul>
+<section class="hero tile">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <h1>{{ p.name }}</h1>
+      <p class="headline">{{ p.headline }}</p>
+      <p class="hero-meta">{{ p.nationality }}, from {{ p.location }}</p>
+      <div class="actions">
+        <a class="btn btn-sun" href="/chat/">Chat with my CV</a>
+        <a class="btn btn-ghost" href="mailto:{{ p.email }}">Email me</a>
+      </div>
+      <ul class="hero-links">{% for l in p.links %}<li><a href="{{ l.url }}" rel="me">{{ l.label }}</a></li>{% endfor %}</ul>
+    </div>
+    <img class="portrait" src="{{ p.photo }}" alt="{{ p.photo_alt }}" width="250" height="250">
   </div>
 </section>
 
-<section class="prose">
-  <h2>About me</h2>
-  <p>{{ p.bio }}</p>
-</section>
+<div class="wrap">
+  <section class="intro">
+    <div>
+      <h2>About me</h2>
+      <p class="lead">{{ p.bio }}</p>
+    </div>
+    <aside class="now" aria-labelledby="now-title">
+      <h2 id="now-title">Right now</h2>
+      <dl>
+        {%- set e = cv.education[0] %}
+        <dt>Studying</dt>
+        <dd>{{ e.degree }}, {{ e.institution }}<span>{{ e.start | range(e.end) }}</span></dd>
+        {%- for x in cv.experience %}{% if x.end == "present" %}
+        <dt>Leading</dt>
+        <dd>{{ x.role }}, {{ x.organization }}<span>since {{ x.start | monthYear }}</span></dd>
+        {%- endif %}{% endfor %}
+        {%- set lp = cv.projects.projects[0] %}
+        <dt>Latest project</dt>
+        <dd>{{ lp.name }}<span>{{ lp.start | range(lp.end) }}</span></dd>
+      </dl>
+    </aside>
+  </section>
 
-<section class="now">
-  <h2>Right now</h2>
-  <ul class="plain">
-    {%- for e in cv.education %}{% if loop.first %}
-    <li>Studying: <strong>{{ e.degree }}</strong> at {{ e.institution }} ({{ e.start | range(e.end) }}).</li>
-    {%- endif %}{% endfor %}
-    {%- for x in cv.experience %}{% if x.end == "present" %}
-    <li>{{ x.role }}, {{ x.organization }} (since {{ x.start | monthYear }}).</li>
-    {%- endif %}{% endfor %}
-    {%- for x in cv.projects.projects %}{% if loop.first %}
-    <li>Latest project: <a href="/projects/"><strong>{{ x.name }}</strong></a> ({{ x.start | range(x.end) }}).</li>
-    {%- endif %}{% endfor %}
-  </ul>
-</section>
+  <section class="home-block">
+    <div class="block-head">
+      <h2>Recent experience</h2>
+      <a href="/experience/">All experience</a>
+    </div>
+    <ol class="entries">
+      {%- for x in cv.experience | batch(3) | first %}
+      <li class="entry">
+        <p class="when">{{ dates(x.start, x.end) }}</p>
+        <div class="entry-body">
+          <h3>{{ x.role }}</h3>
+          <p class="where">{{ x.organization }}</p>
+          <p>{{ x.description }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </section>
 
-<section class="ask">
-  <h2>Have a question about my CV?</h2>
-  <p>{{ cv.chat.intro }}</p>
-  <p><a class="button" href="/chat/">Chat with my CV</a></p>
-</section>
+  <section class="home-block">
+    <div class="block-head">
+      <h2>Projects</h2>
+      <a href="/projects/">All projects and certificates</a>
+    </div>
+    <ul class="project-grid">
+      {%- for x in cv.projects.projects %}
+      <li>
+        <p class="when">{{ x.start | monthYear }}</p>
+        <h3>{% if x.url %}<a href="{{ x.url }}">{{ x.name }}</a>{% else %}{{ x.name }}{% endif %}</h3>
+        <p>{{ x.description }}</p>
+        {{ tags(x.technologies) }}
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="ask">
+    <div>
+      <h2>Have a question about my CV?</h2>
+      <p>{{ cv.chat.intro }}</p>
+    </div>
+    <a class="btn btn-sun" href="/chat/">Chat with my CV</a>
+  </section>
+</div>
