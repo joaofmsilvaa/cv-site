@@ -1,0 +1,39 @@
+---
+layout: base.njk
+---
+{%- set p = cv.profile -%}
+<section class="hero">
+  <img class="portrait" src="{{ p.photo }}" alt="{{ p.photo_alt }}" width="250" height="250">
+  <div>
+    <h1>{{ p.name }}</h1>
+    <p class="headline">{{ p.headline }}</p>
+    <p class="contact">{{ p.nationality }}, based in {{ p.location }}.<br><a href="mailto:{{ p.email }}">{{ p.email }}</a></p>
+    <ul class="links">{% for l in p.links %}<li><a href="{{ l.url }}" rel="me">{{ l.label }}</a></li>{% endfor %}</ul>
+  </div>
+</section>
+
+<section class="prose">
+  <h2>About me</h2>
+  <p>{{ p.bio }}</p>
+</section>
+
+<section class="now">
+  <h2>Right now</h2>
+  <ul class="plain">
+    {%- for e in cv.education %}{% if loop.first %}
+    <li>Studying: <strong>{{ e.degree }}</strong> at {{ e.institution }} ({{ e.start | range(e.end) }}).</li>
+    {%- endif %}{% endfor %}
+    {%- for x in cv.experience %}{% if x.end == "present" %}
+    <li>{{ x.role }}, {{ x.organization }} (since {{ x.start | monthYear }}).</li>
+    {%- endif %}{% endfor %}
+    {%- for x in cv.projects.projects %}{% if loop.first %}
+    <li>Latest project: <a href="/projects/"><strong>{{ x.name }}</strong></a> ({{ x.start | range(x.end) }}).</li>
+    {%- endif %}{% endfor %}
+  </ul>
+</section>
+
+<section class="ask">
+  <h2>Have a question about my CV?</h2>
+  <p>{{ cv.chat.intro }}</p>
+  <p><a class="button" href="/chat/">Chat with my CV</a></p>
+</section>

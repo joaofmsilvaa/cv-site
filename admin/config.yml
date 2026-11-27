@@ -1,0 +1,146 @@
+# Decap CMS: edits the JSON files in /content and commits them to GitHub.
+# Netlify rebuilds the site on every commit.
+backend:
+  name: github
+  repo: joaofmsilvaa/cv-site   # TODO: confirm the GitHub repo name in Phase 3
+  branch: main
+  # Login uses Netlify's GitHub OAuth provider (api.netlify.com), set up in Phase 3.
+
+# `npx decap-server` + this flag lets you test /admin locally without logging in.
+local_backend: true
+
+site_url: https://joaofmsilva.netlify.app
+display_url: https://joaofmsilva.netlify.app
+logo_url: /assets/uploads/profile.png
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: cv
+    label: CV content
+    editor: { preview: false }
+    files:
+      - name: profile
+        label: Profile
+        file: content/profile.json
+        format: json
+        fields:
+          - { name: name, label: Full name, widget: string }
+          - { name: headline, label: Headline, widget: string }
+          - { name: nationality, label: Nationality, widget: string }
+          - { name: location, label: Location, widget: string }
+          - { name: email, label: Public email, widget: string }
+          - { name: photo, label: Photo, widget: image }
+          - { name: photo_alt, label: Photo description (alt text), widget: string }
+          - { name: bio, label: About me, widget: text }
+          - name: links
+            label: Links
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { name: label, label: Label, widget: string }
+              - { name: url, label: URL, widget: string }
+
+      - name: education
+        label: Education
+        file: content/education.json
+        format: json
+        fields:
+          - name: items
+            label: Education
+            widget: list
+            summary: "{{fields.degree}} ({{fields.institution}})"
+            fields:
+              - { name: degree, label: Degree / programme, widget: string }
+              - { name: institution, label: Institution, widget: string }
+              - { name: location, label: Location, widget: string, required: false }
+              - { name: start, label: Start date (YYYY-MM-DD), widget: string }
+              - { name: end, label: End date (YYYY-MM-DD or "present"), widget: string }
+              - { name: description, label: Description, widget: text, required: false }
+              - { name: courses, label: Courses, widget: list, required: false }
+              - { name: eqf_level, label: EQF level, widget: string, required: false }
+              - { name: url, label: Website, widget: string, required: false }
+
+      - name: experience
+        label: Experience
+        file: content/experience.json
+        format: json
+        fields:
+          - name: items
+            label: Experience
+            widget: list
+            summary: "{{fields.role}} at {{fields.organization}}"
+            fields:
+              - { name: role, label: Role, widget: string }
+              - { name: organization, label: Organisation, widget: string }
+              - { name: location, label: Location, widget: string, required: false }
+              - { name: start, label: Start date (YYYY-MM-DD), widget: string }
+              - { name: end, label: End date (YYYY-MM-DD or "present"), widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: technologies, label: Technologies, widget: list, required: false }
+
+      - name: skills
+        label: Skills
+        file: content/skills.json
+        format: json
+        fields:
+          - name: groups
+            label: Skill groups
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Group name, widget: string }
+              - { name: items, label: Skills, widget: list }
+          - name: languages
+            label: Languages
+            widget: list
+            summary: "{{fields.language}}: {{fields.level}}"
+            fields:
+              - { name: language, label: Language, widget: string }
+              - { name: level, label: Level, widget: string }
+
+      - name: projects
+        label: Projects, certificates and volunteering
+        file: content/projects.json
+        format: json
+        fields:
+          - name: projects
+            label: Projects
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: start, label: Start date (YYYY-MM-DD), widget: string }
+              - { name: end, label: End date (YYYY-MM-DD), widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: technologies, label: Technologies, widget: list, required: false }
+              - { name: url, label: Link, widget: string, required: false }
+          - name: certificates
+            label: Certificates
+            widget: list
+            summary: "{{fields.name}} ({{fields.issuer}})"
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: issuer, label: Issuer, widget: string }
+              - { name: date, label: Date (YYYY-MM-DD), widget: string }
+          - name: volunteering
+            label: Volunteering
+            widget: list
+            summary: "{{fields.role}}"
+            fields:
+              - { name: role, label: Role, widget: string }
+              - { name: organization, label: Organisation, widget: string }
+              - { name: location, label: Location, widget: string, required: false }
+              - { name: start, label: Start date (YYYY-MM-DD), widget: string }
+              - { name: end, label: End date (YYYY-MM-DD), widget: string }
+
+      - name: chat
+        label: Chatbot
+        file: content/chat.json
+        format: json
+        fields:
+          - { name: intro, label: Intro text, widget: text }
+          - { name: bot_url, label: Public chatbot URL, widget: string, required: false }
+          - { name: iframe_src, label: Chatbot iframe src URL, widget: string, required: false }
+          - { name: bubble_script, label: Chat bubble embed script (optional), widget: text, required: false }

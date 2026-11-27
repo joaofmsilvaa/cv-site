@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "degree": "Erasmus+ exchange, Computer Engineering",
+      "institution": "Vilnius Gediminas Technical University (VILNIUS TECH)",
+      "location": "Vilnius, Lithuania",
+      "start": "2026-08-26",
+      "end": "2027-01-29",
+      "description": "",
+      "courses": ["Software of Applied Artificial Intelligence", "Fundamentals of Research and Innovation"],
+      "eqf_level": "",
+      "url": "https://vilniustech.lt/en/"
+    },
+    {
+      "degree": "Bachelor's degree (Licenciatura) in Computer Engineering",
+      "institution": "Polytechnic Institute of Beja (Instituto Politécnico de Beja)",
+      "location": "Beja, Portugal",
+      "start": "2024-09-15",
+      "end": "present",
+      "description": "I stood out in mobile application development, web technologies and object-oriented programming. For the Information Systems course I wrote the paper \"Análise Comparativa entre Regressão Logística e Random Forest na Previsão de Níveis Críticos de PM 2.5 em Beijing\" (Comparative Analysis of Logistic Regression and Random Forest for Predicting Critical PM2.5 Levels in Beijing), which was accepted at the 21st edition of the Iberian Conference CISTI.",
+      "courses": [],
+      "eqf_level": "6",
+      "url": ""
+    },
+    {
+      "degree": "Erasmus+ BIP: Design Greener Transport Solutions for Better Nature Experiences",
+      "institution": "SeAMK, Seinäjoki University of Applied Sciences",
+      "location": "Seinäjoki, Finland",
+      "start": "2025-03-01",
+      "end": "2025-05-26",
+      "description": "I worked with a team of students from several European countries to analyse sustainable transport options for reaching geoparks, and I was responsible for developing a prototype trip-planning system.",
+      "courses": [],
+      "eqf_level": "4",
+      "url": ""
+    },
+    {
+      "degree": "CTeSP in Web Technologies and Mobile Devices",
+      "institution": "Polytechnic Institute of Beja (Instituto Politécnico de Beja)",
+      "location": "Beja, Portugal",
+      "start": "2022-01-02",
+      "end": "2024-06-20",
+      "description": "",
+      "courses": [],
+      "eqf_level": "5",
+      "url": ""
+    }
+  ]
+}

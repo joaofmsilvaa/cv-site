@@ -1,0 +1,9 @@
+---
+layout: base.njk
+title: Education
+permalink: /education/
+description: Education of João Silva, Computer Engineering student at the Polytechnic Institute of Beja and Erasmus+ student at VILNIUS TECH.
+---
+{% from "macros.njk" import educationList %}
+<h1>Education</h1>
+{{ educationList(cv.education, "h2") }}

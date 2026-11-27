@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: Chat with my CV
+permalink: /chat/
+description: Ask an AI assistant trained on João Silva's CV, website and university page.
+---
+<h1>Chat with my CV</h1>
+<p class="lede">{{ cv.chat.intro }}</p>
+
+{% if cv.chat.iframe_src %}
+<div class="chat-frame">
+  <iframe src="{{ cv.chat.iframe_src }}" title="João Silva CV Assistant" allow="clipboard-write" loading="lazy"></iframe>
+</div>
+{% else %}
+<p class="notice">The assistant is being set up. Until it's ready, write to me at <a href="mailto:{{ cv.profile.email }}">{{ cv.profile.email }}</a>.</p>
+{% endif %}
+
+{% if cv.chat.bot_url %}
+<p>Prefer a full window? <a href="{{ cv.chat.bot_url }}">Open the assistant on its own page</a>.</p>
+{% endif %}
+
+<h2 class="section-title">Things you could ask</h2>
+<ul class="plain">
+  <li>Where does João study, and what?</li>
+  <li>What did João build at FlyRank.ai and Mindshaker?</li>
+  <li>Which AI projects has João worked on?</li>
+  <li>Que línguas fala o João?</li>
+</ul>

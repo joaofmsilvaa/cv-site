@@ -1,0 +1,5 @@
+{#- Floating chatbot bubble, shown on every page except /chat/ (which has the full iframe).
+    The script snippet comes from content/chat.json, so it can be changed from the CMS. -#}
+{%- if cv.chat.bubble_script and page.url != "/chat/" %}
+{{ cv.chat.bubble_script | safe }}
+{%- endif %}

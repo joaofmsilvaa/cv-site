@@ -1,0 +1,11 @@
+---
+layout: base.njk
+title: Experience
+permalink: /experience/
+description: Work experience, internships and student leadership roles of João Silva.
+---
+{% from "macros.njk" import experienceList, volunteeringBlock %}
+<h1>Experience</h1>
+{{ experienceList(cv.experience, "h2") }}
+<h2 class="section-title">Volunteering</h2>
+{{ volunteeringBlock(cv.projects) }}

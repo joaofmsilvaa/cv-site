@@ -1,0 +1,16 @@
+{
+  "projects": [
+    {"name": "Lumen AI", "start": "2026-02-02", "end": "2026-03-30", "description": "An AI document assistant that uses Retrieval-Augmented Generation (RAG) to give answers, sources and suggestions based on uploaded PDF documents.", "technologies": [], "url": "https://github.com/joaofmsilvaa/Lumen-AI"},
+    {"name": "MedAssist", "start": "2025-12-01", "end": "2026-01-05", "description": "A RAG system specialised in medical documents, built to give evidence-based answers from clinical guidelines and protocols.", "technologies": ["Python", "LangChain", "OpenAI API", "RAG", "Streamlit"], "url": ""},
+    {"name": "Mindshaker Tools", "start": "2024-05-10", "end": "2024-06-14", "description": "An internal dashboard built during my internship at Mindshaker to increase productivity and support project management, improving team visibility and operational efficiency.", "technologies": ["Laravel", "UIKit", "JavaScript"], "url": ""},
+    {"name": "ReactCinema", "start": "2024-03-02", "end": "2024-04-06", "description": "An online cinema that uses an API to gather and filter films, casts and reviews, with a login system integrated with the TMDB API.", "technologies": ["React", "JavaScript", "API"], "url": ""},
+    {"name": "BodyBoost", "start": "2023-03-01", "end": "2024-01-12", "description": "A commercial website promoting the BodyBoost app, focused on meals, news and a healthy lifestyle.", "technologies": ["Laravel", "TailwindCSS", "MySQL", "API"], "url": ""}
+  ],
+  "certificates": [
+    {"name": "Machine Learning", "issuer": "Stanford University", "date": "2025-08-30"},
+    {"name": "AWS Cloud Technical Essentials", "issuer": "Amazon Web Services (AWS)", "date": "2025-01-12"}
+  ],
+  "volunteering": [
+    {"role": "Erasmus Buddy", "organization": "Polytechnic Institute of Beja", "location": "Beja, Portugal", "start": "2025-02-01", "end": "2025-05-24"}
+  ]
+}

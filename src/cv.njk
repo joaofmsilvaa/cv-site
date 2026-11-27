@@ -1,0 +1,34 @@
+---
+layout: base.njk
+title: Full CV
+permalink: /cv/
+description: The complete CV of João Silva on one page, in plain text.
+---
+{% from "macros.njk" import educationList, experienceList, skillsBlock, projectsBlock, certificatesBlock, volunteeringBlock %}
+{%- set p = cv.profile -%}
+<article class="cv-full">
+  <h1>Curriculum vitae: {{ p.name }}</h1>
+  <p>{{ p.headline }}. Nationality: {{ p.nationality }}. Location: {{ p.location }}. Email: <a href="mailto:{{ p.email }}">{{ p.email }}</a>.</p>
+  <p>Online: {% for l in p.links %}{{ l.label }} <a href="{{ l.url }}">{{ l.url }}</a>{% if not loop.last %}; {% endif %}{% endfor %}.</p>
+
+  <h2>About me</h2>
+  <p>{{ p.bio }}</p>
+
+  <h2>Education</h2>
+  {{ educationList(cv.education) }}
+
+  <h2>Work experience</h2>
+  {{ experienceList(cv.experience) }}
+
+  <h2>Skills</h2>
+  {{ skillsBlock(cv.skills) }}
+
+  <h2>Projects</h2>
+  {{ projectsBlock(cv.projects) }}
+
+  <h2>Certificates</h2>
+  {{ certificatesBlock(cv.projects) }}
+
+  <h2>Volunteering</h2>
+  {{ volunteeringBlock(cv.projects) }}
+</article>

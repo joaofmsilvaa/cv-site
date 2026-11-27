@@ -1,0 +1,12 @@
+{
+  "groups": [
+    {"name": "Programming languages", "items": ["Java", "Python", "JavaScript"]},
+    {"name": "Frameworks and libraries", "items": ["React", "React Native", "Laravel", "LangChain", "Streamlit", "TailwindCSS", "SASS", "Next.js (training)"]},
+    {"name": "AI and data", "items": ["Machine learning", "Retrieval-Augmented Generation (RAG)", "OpenAI API"]},
+    {"name": "Tools and platforms", "items": ["Git and GitHub", "MySQL", "AWS", "Stripe webhooks"]}
+  ],
+  "languages": [
+    {"language": "Portuguese", "level": "Native"},
+    {"language": "English", "level": "C1: listening C1, reading C1, spoken production B2, spoken interaction C1, writing C1"}
+  ]
+}

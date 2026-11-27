@@ -1,0 +1,11 @@
+---
+layout: base.njk
+title: Projects and certificates
+permalink: /projects/
+description: Software and AI projects and certificates of João Silva.
+---
+{% from "macros.njk" import projectsBlock, certificatesBlock %}
+<h1>Projects</h1>
+{{ projectsBlock(cv.projects, "h2") }}
+<h2 class="section-title">Certificates</h2>
+{{ certificatesBlock(cv.projects) }}

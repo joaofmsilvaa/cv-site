@@ -1,0 +1,9 @@
+---
+layout: base.njk
+title: Skills
+permalink: /skills/
+description: Technical skills and languages of João Silva.
+---
+{% from "macros.njk" import skillsBlock %}
+<h1>Skills</h1>
+{{ skillsBlock(cv.skills, "h2") }}

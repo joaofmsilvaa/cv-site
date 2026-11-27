@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "role": "Backend AI Engineer (internship)",
+      "organization": "FlyRank.ai",
+      "location": "",
+      "start": "2026-07-01",
+      "end": "2026-08-31",
+      "description": "During my internship I developed a robust API for LLM metering and billing, integrated with Stripe webhooks.",
+      "technologies": []
+    },
+    {
+      "role": "Community Organizer",
+      "organization": "Google Developer Group on Campus, Polytechnic Institute of Beja",
+      "location": "Beja, Portugal",
+      "start": "2026-01-01",
+      "end": "2026-06-30",
+      "description": "I coordinated student teams and organised tech events on key Google technologies such as Android development, AI/LLM tools and Google Cloud.",
+      "technologies": []
+    },
+    {
+      "role": "Student Ambassador",
+      "organization": "Magma Studios",
+      "location": "Beja, Portugal",
+      "start": "2025-06-28",
+      "end": "2025-12-22",
+      "description": "I bridged academia and industry, supporting projects and initiatives for young talent, including job and internship opportunities at companies such as NTT Data and NOS.",
+      "technologies": []
+    },
+    {
+      "role": "Founder and President",
+      "organization": "Computer Engineering Student Association of the Polytechnic Institute of Beja (NEIIPBeja)",
+      "location": "Beja, Portugal",
+      "start": "2024-09-15",
+      "end": "present",
+      "description": "I lead initiatives that promote innovation, collaboration and professional development among technology students. I created teaching material and short courses for more than 50 participants: Git and GitHub Fundamentals, and Machine Learning Fundamentals. I also managed the association's LinkedIn and Instagram pages, publishing the events and projects NEIIPBeja organised.",
+      "technologies": []
+    },
+    {
+      "role": "Web Developer (internship)",
+      "organization": "Mindshaker",
+      "location": "Costa da Caparica, Portugal",
+      "start": "2024-02-02",
+      "end": "2024-06-16",
+      "description": "I built an internal dashboard to support project-management processes, improving team visibility and operational efficiency. It used Laravel for the backend with a responsive JavaScript and SASS frontend. I was also trained in modern web technologies, including React and Next.js, gaining hands-on experience with component-based architecture and server-side rendering.",
+      "technologies": ["Laravel", "JavaScript", "SASS", "React (training)", "Next.js (training)"]
+    }
+  ]
+}

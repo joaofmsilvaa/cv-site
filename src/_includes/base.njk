@@ -1,0 +1,59 @@
+{%- set p = cv.profile -%}
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} | {% endif %}{{ p.name }}</title>
+  <meta name="description" content="{{ description or (p.name + ', ' + p.headline) }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="icon" href="{{ p.photo }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ p.name | dump | safe }},
+    "description": {{ p.headline | dump | safe }},
+    "email": {{ ("mailto:" + p.email) | dump | safe }},
+    "nationality": {{ p.nationality | dump | safe }},
+    "homeLocation": {{ p.location | dump | safe }},
+    "url": {{ site.url | dump | safe }},
+    "sameAs": [{% for l in p.links %}{{ l.url | dump | safe }}{% if not loop.last %}, {% endif %}{% endfor %}]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-head">
+    <div class="wrap head-row">
+      <a class="brand" href="/">{{ p.name }}</a>
+      <nav aria-label="Main">
+        <ul>
+          {%- set nav = [["/", "Home"], ["/education/", "Education"], ["/experience/", "Experience"], ["/skills/", "Skills"], ["/projects/", "Projects"], ["/cv/", "Full CV"], ["/chat/", "Chat with my CV"]] %}
+          {%- for item in nav %}
+          <li><a href="{{ item[0] }}"{% if page.url == item[0] %} aria-current="page"{% endif %}{% if item[0] == "/chat/" %} class="nav-chat"{% endif %}>{{ item[1] }}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="barra" aria-hidden="true"></div>
+
+  <main id="main" class="wrap">
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-foot">
+    <div class="barra" aria-hidden="true"></div>
+    <div class="wrap foot-row">
+      <p>{{ p.name }}, {{ p.location }}. Write to me at <a href="mailto:{{ p.email }}">{{ p.email }}</a>.</p>
+      <p>{% for l in p.links %}<a href="{{ l.url }}" rel="me">{{ l.label }}</a>{% if not loop.last %} &nbsp;/&nbsp; {% endif %}{% endfor %}</p>
+    </div>
+  </footer>
+  {% include "chat-bubble.njk" %}
+</body>
+</html>

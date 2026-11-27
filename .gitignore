@@ -1,0 +1,6 @@
+node_modules/
+_site/
+.cache/
+# Private: contains phone number and raw notes. Never publish.
+inputs/
+*.log
