@@ -9,8 +9,8 @@ backend:
 # `npx decap-server` + this flag lets you test /admin locally without logging in.
 local_backend: true
 
-site_url: https://joaofmsilva.netlify.app
-display_url: https://joaofmsilva.netlify.app
+site_url: https://joaofmsilvaa.netlify.app
+display_url: https://joaofmsilvaa.netlify.app
 logo_url: /assets/uploads/profile.png
 
 media_folder: assets/uploads
