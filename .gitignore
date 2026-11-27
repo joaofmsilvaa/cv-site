@@ -4,3 +4,6 @@ _site/
 # Private: contains phone number and raw notes. Never publish.
 inputs/
 *.log
+
+# Original CV with phone number stays local
+knowledge/raw/*.pdf
