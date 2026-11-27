@@ -1,6 +1,6 @@
 {
   "name": "João Silva",
-  "headline": "Computer Engineering student building software with AI and machine learning",
+  "headline": "Computer Engineering student building impactful software solutions",
   "nationality": "Portuguese",
   "location": "Odemira, Portugal",
   "email": "joaosilva.contacts@gmail.com",
@@ -8,8 +8,17 @@
   "photo_alt": "Portrait of João Silva",
   "bio": "I'm an enthusiastic and dedicated Computer Engineering student from Portugal, with a talent for creating distinctive projects with real impact. As a Computer Engineering student at the Polytechnic Institute of Beja, I have developed a broad set of skills and in-depth knowledge in areas such as Software Development, Artificial Intelligence and Machine Learning.",
   "links": [
-    {"label": "Portfolio", "url": "https://joaosilva-portfolio.vercel.app/"},
-    {"label": "LinkedIn", "url": "https://www.linkedin.com/in/joaofmsilvaa/"},
-    {"label": "GitHub", "url": "https://github.com/joaofmsilvaa"}
+    {
+      "label": "Portfolio",
+      "url": "https://joaosilva-portfolio.vercel.app/"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/joaofmsilvaa/"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/joaofmsilvaa"
+    }
   ]
 }
